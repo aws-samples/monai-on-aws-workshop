@@ -1,17 +1,23 @@
-## My Project
+# MONAI on AWS Workshop
 
-TODO: Fill this README out!
 
-Be sure to:
 
-* Change the title in this README
-* Edit your repository description on GitHub
+## Architecture Diagram
 
-## Security
+![arch](Figures/arch.png)
 
-See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
+
+## Prerequisit
+
+1. Use Jupyter Lab v3
+
+![labv3](Figures/labv3.png)
+
+
+2. Install *imjoy-jupyter-extension*
+
+![imjoy](Figures/imjoy.png)
 
 ## License
 
 This library is licensed under the MIT-0 License. See the LICENSE file.
-
