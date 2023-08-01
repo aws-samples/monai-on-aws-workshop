@@ -35,17 +35,6 @@ ENV KEEP_FILES=YES
 # make sure all messages reach the console
 ENV PYTHONUNBUFFERED=1
 
-
-# # copy model file to model folder
-# RUN wget -q https://github.com/Project-MONAI/model-zoo/releases/download/hosting_storage_v1/lung_nodule_ct_detection_v0.2.0.zip && \
-#     unzip lung_nodule_ct_detection_v0.2.0.zip -d /tmp/ && \
-#     cp /tmp/lung_nodule_ct_detection/models/model.ts model/. && \
-#     rm -rf /tmp/lung_nodule_ct_detection && \
-#     rm lung_nodule_ct_detection_v0.2.0.zip
-
-
-# RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 1
-
 # Install MMS, and SageMaker Inference Toolkit to set up MMS
 RUN python -m pip install --upgrade pip boto3 botocore && \
     python -m pip --no-cache-dir install multi-model-server \

@@ -8,7 +8,6 @@ import boto3
 
 from app import AISpleenSegApp
 
-# from Api import MedicalImaging 
 from AHItoDICOMInterface.AHItoDICOM import AHItoDICOM
 helper = AHItoDICOM()
 
@@ -42,13 +41,6 @@ def input_fn(serialized_input_data, content_type=JSON_CONTENT_TYPE):
 
 def predict_fn(input_data, model):
     
-    # model['instance'].run(
-    #     input=input_data,
-    #     output=model['model_dir'],
-    #     model=model['model_dir']+'/model.ts',
-    #     workdir='/tmp'
-    # )
-    
     with open('/home/model-server/inputImageSets.json', 'w') as f:
         f.write(json.dumps(input_data))
         
@@ -56,12 +48,6 @@ def predict_fn(input_data, model):
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
 
-    
-    # sop_instances = medicalimaging.getDICOMdataset(input_data['datastoreId'], input_data['imageSetId'])
-    # for ds in sop_instances:
-    #     ds.save_as(f"/home/model-server/{ds.file_meta.MediaStorageSOPInstanceUID}.dcm")
-    # logging.info("##### dicom files: {}".format(os.listdir("/home/model-server/")))   
-    
     model.run(
         input='/home/model-server/inputImageSets.json',
         output=output_folder,
