@@ -98,7 +98,9 @@ class MedicalImaging:
         res = self.client.get_image_frame(
             datastoreId=datastoreId,
             imageSetId=imageSetId,
-            imageFrameId=imageFrameId)
+            imageFrameInformation={
+                'imageFrameId': imageFrameId
+            })
         end_time = time.time()
         logging.debug(f"Frame fetch     : {self.stopwatch(start_time,end_time)} ms") 
         start_time = time.time() 
@@ -208,3 +210,4 @@ class MedicalImaging:
             bytevals.append(int(byteval)) 
         OBArray = bytearray(bytevals)
         return bytes(OBArray)
+
