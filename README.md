@@ -6,7 +6,7 @@ AWS and NVIDIA build applications and solutions to make healthcare more accessib
 
 ## Architecture Diagram
 
-Here is the architecture diagram, showing how MONAI Application Package (MAP) is deployed on Amazon SageMaker managed inference endpoints:
+Here is the architecture diagram, showing how [MONAI Application Package](https://github.com/Project-MONAI/monai-deploy/blob/main/guidelines/monai-application-package.md) (MAP) is deployed on Amazon SageMaker managed inference endpoints:
 
 ![MONAI Deploy Arch Diagram](Figures/monaideploy_arch.png)
 
