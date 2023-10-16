@@ -67,6 +67,6 @@ def output_fn(prediction_output, accept=JSON_CONTENT_TYPE):
             s3_client.upload_file(os.path.join(root,file), f'sagemaker-{region}-{account_id}', 'monaideploy/'+file)
     
     if accept == JSON_CONTENT_TYPE:
-        return json.dumps({f"s://sagemaker-{region}-{account_id}/monaideploy/{}".format(file): "1"}), accept
+        return json.dumps({f"s://sagemaker-{region}-{account_id}/monaideploy/{file}": "1"}), accept
 
     raise Exception('Requested unsupported ContentType in Accept: ' + accept)

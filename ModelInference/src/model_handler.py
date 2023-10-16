@@ -16,6 +16,9 @@ logging.info(f"######## boto3 version {boto3.__version__}")
 from app import AISpleenSegApp
 from AHItoDICOMInterface.AHItoDICOM import AHItoDICOM
 
+account_id = boto3.client("sts").get_caller_identity()["Account"]
+region = boto3.Session().region_name
+
 class ModelHandler(object):
     """
     A sample Model handler implementation.
@@ -58,13 +61,13 @@ class ModelHandler(object):
         datastoreId = json.loads(inputStr)['inputs'][0]['datastoreId']
         imageSetId = json.loads(inputStr)['inputs'][0]['imageSetId']
         
-        with open('/tmp/inputImageSets.json', 'w') as f:
+        with open('/home/model-server/inputImageSets.json', 'w') as f:
             f.write(json.dumps({
                 "datastoreId": datastoreId, 
                 "imageSetId": imageSetId
             }))
         
-        return '/tmp/inputImageSets.json'
+        return '/home/model-server/inputImageSets.json'
 
     def inference(self, model_input, targetmodel):
         """
@@ -89,9 +92,9 @@ class ModelHandler(object):
         for root,dirs,files in os.walk("/home/model-server/output/"):
             logging.info(files)
             for file in files:
-                self.s3_client.upload_file(os.path.join(root,file), 'sagemaker-us-east-1-749291336608', 'monaideploy/'+file)
+                self.s3_client.upload_file(os.path.join(root,file), f"sagemaker-{region}-{account_id}", 'monaideploy/'+file)
 
-        return [{"s://sagemaker-us-east-1-749291336608/monaideploy/{}".format(file): "1"}]
+        return [{f"s://sagemaker-{region}-{account_id}/monaideploy/{file}": "outputs3file"}]
 
     def handle(self, data, context):
         """

@@ -48,7 +48,7 @@ RUN python -m pip install --upgrade pip boto3 botocore && \
                             highdicom==0.19.0 \
                             SimpleITK>=2.0.0 \
                             typeguard>=2.12.1 \
-                            monai-deploy-app-sdk==0.5.0 \
+                            monai-deploy-app-sdk~=0.5.1 \
                             pylibjpeg-openjpeg \
                             AHItoDICOMInterface
 
@@ -63,7 +63,6 @@ RUN chmod a+w /home/model-server/
 # Copy the default custom service file to handle incoming data and inference requests
 COPY model_handler.py /home/model-server/model_handler.py
 COPY app.py /home/model-server/app.py
-COPY Api.py /home/model-server/Api.py
 COPY ahi_data_loader_operator.py /home/model-server/ahi_data_loader_operator.py
 
 # Model output folder
