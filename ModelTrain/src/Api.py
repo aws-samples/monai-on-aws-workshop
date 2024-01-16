@@ -87,6 +87,17 @@ class MedicalImaging:
         logging.debug(f"Get Import Job  : {self.stopwatch(start_time,end_time)} ms")        
         return response
     
+
+    def listImportJobs(self, datastoreId, jobStatus='COMPLETED'):
+        start_time = time.time()
+        response = self.client.list_dicom_import_jobs(
+            datastoreId=datastoreId,
+            jobStatus = jobStatus
+        )
+        end_time = time.time()
+        logging.debug(f"List Import Jobs : {self.stopwatch(start_time,end_time)} ms")        
+        return response
+    
     
     def getFramePixels(self, datastoreId, imageSetId, imageFrameId):
         start_time = time.time()
