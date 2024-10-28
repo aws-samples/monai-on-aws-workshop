@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nim-llm-alb
+  namespace: vista
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/success-codes: "200-299"
+    alb.ingress.kubernetes.io/healthcheck-path: "/health/ready"
+    alb.ingress.kubernetes.io/healthcheck-port: "8008"
+spec:
+  ingressClassName: alb
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: vista-nim-llm
+            port:
+              number: 8008
