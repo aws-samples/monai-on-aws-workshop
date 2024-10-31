@@ -1,5 +1,5 @@
 image:
-  repository: "749291336608.dkr.ecr.us-east-1.amazonaws.com/nim-shim" # container location
+  repository: "" # ECR container image URI
   tag: "medical_imaging_vista3d"
 model:
   name: vista3d
