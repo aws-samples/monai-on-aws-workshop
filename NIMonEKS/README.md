@@ -29,11 +29,14 @@ Pull the vista3d image
 docker pull nvcr.io/nvidia/nim/medical_imaging_vista3d
 ```
 
-Run the image and create a shell to investigate the container
+(Optional) Run the image and create a shell to investigate the container
 
 ```bash
 docker run -it $IMAGE_ID sh
 ```
+
+[Create a private ECR repository](https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-create.html) for this container image. Tag and [push the container image](https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html) to that private ECR repository. Get the image URI for later helm deployment.
+
 
 ## Create EKS cluster with add-ons
 
