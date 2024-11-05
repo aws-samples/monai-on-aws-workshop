@@ -1,5 +1,5 @@
 image:
-  repository: "" # ECR container image URI
+  repository: "{AccountID}.dkr.ecr.{Region}.amazonaws.com/{Repo}:medical_imaging_vista3d" # ECR container image URI
   tag: "medical_imaging_vista3d"
 model:
   name: vista3d

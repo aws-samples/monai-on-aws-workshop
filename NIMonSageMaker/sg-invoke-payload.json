@@ -1,0 +1,6 @@
+{
+    "image": "https://assets.ngc.nvidia.com/products/api-catalog/vista3d/example-1.nii.gz",
+    "prompts": {
+        "classes": ["liver", "spleen"]
+    }
+}
