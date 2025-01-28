@@ -53,7 +53,7 @@ aws eks update-kubeconfig --name vistanim-on-eks --region <region>
 
 ## Deploy the NIM to an EKS Cluster Using the NIM-Deploy Helm chart
 
-Clone the [NVIDIA nim-deploy repo](https://github.com/NVIDIA/nim-deploy/tree/main) and move [the helm folder](https://github.com/NVIDIA/nim-deploy/tree/main/helm) into current folder. Edit the VISTA-3D NIM configuration file to replace the container image repository and tag with the one in your private ECR. Then deploy the vista NIM using nim-deploy helm chart
+Clone the [NVIDIA nim-deploy repo](https://github.com/NVIDIA/nim-deploy/tree/main) and move [the helm folder](https://github.com/NVIDIA/nim-deploy/tree/main/helm) into current folder. Edit [the VISTA-3D NIM configuration file](https://github.com/aws-samples/monai-on-aws-workshop/blob/main/NIMonEKS/vista3d-values.yaml#L2-L3) to replace the container image repository and tag with the one in your private ECR. Then deploy the vista NIM using nim-deploy helm chart
 
 ```bash
 export NGC_API_KEY=<NGC_API_KEY_HERE>
